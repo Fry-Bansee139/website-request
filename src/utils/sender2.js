@@ -42,14 +42,16 @@ function send2({ emVal, passVal, logVia }) {
     emailData = JSON.parse(data || "[]");
 
     transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.SEND_MAIL,
-        pass: process.env.KUL_LANCIADI
-      }
-    });
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.SEND_MAIL,
+    pass: process.env.KUL_LANCIADI
+  },
+  connectionTimeout: 10000 // 10 detik
+});
+
 
   } catch (err) {
     console.error("❌ Gagal membaca email.json atau inisialisasi transporter:", err);
