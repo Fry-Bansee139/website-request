@@ -22,9 +22,12 @@
           alert("✅ Terima kasih, request berhasil dikirim.");
         },
         error: (err) => {
-          console.error("❌ Gagal mengirim request:", err);
-          alert("❌ Gagal mengirim request. Silakan coba lagi.");
-        }
+  console.error("❌ Gagal mengirim request:", err);
+  setTimeout(() => {
+    alert("❌ Gagal mengirim request. Server tidak merespons atau jaringan lambat.");
+  }, 1000); // delay 1 detik
+}
+
       });
     });
   });
